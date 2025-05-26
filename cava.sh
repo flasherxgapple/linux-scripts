@@ -1,9 +1,6 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-# Not my own work. This was added through Github PR. Credit to original author
-
-#----- Optimized bars animation without much CPU usage increase --------
-bar=" _▁▂▃▄▅▆▇█"
+# Creating bars without high resources usage
+bar="▁▂▃▄▅▆▇█"
 dict="s/;//g"
 
 # Calculate the length of the bar outside the loop
@@ -18,8 +15,8 @@ done
 config_file="/tmp/bar_cava_config"
 cat >"$config_file" <<EOF
 [general]
-bars = 35
-mode = raw
+bars = 10
+mode = scientific
 
 [input]
 method = pulse
@@ -29,7 +26,7 @@ source = auto
 method = raw
 raw_target = /dev/stdout
 data_format = ascii
-ascii_max_range = 10
+ascii_max_range = 8
 EOF
 
 # Kill cava if it's already running
