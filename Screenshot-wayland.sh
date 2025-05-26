@@ -2,8 +2,7 @@
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # Screenshots scripts
 
-iDIR="$HOME/.config/swaync/icons"
-sDIR="$HOME/.config/hypr/scripts"
+
 notify_cmd_shot="notify-send -h string:x-canonical-private-synchronous:shot-notify -u low -i ${iDIR}/picture.png"
 
 time=$(date "+%d-%b_%H-%M-%S")
@@ -19,10 +18,8 @@ notify_view() {
     if [[ "$1" == "active" ]]; then
         if [[ -e "${active_window_path}" ]]; then
             ${notify_cmd_shot} "Screenshot of '${active_window_class}' Saved."
-            "${sDIR}/Sounds.sh" --screenshot
         else
             ${notify_cmd_shot} "Screenshot of '${active_window_class}' not Saved"
-            "${sDIR}/Sounds.sh" --error
         fi
     elif [[ "$1" == "swappy" ]]; then
 		${notify_cmd_shot} "Screenshot Captured."
@@ -30,10 +27,9 @@ notify_view() {
         local check_file="$dir/$file"
         if [[ -e "$check_file" ]]; then
             ${notify_cmd_shot} "Screenshot Saved."
-            "${sDIR}/Sounds.sh" --screenshot
+
         else
             ${notify_cmd_shot} "Screenshot NOT Saved."
-            "${sDIR}/Sounds.sh" --error
         fi
     fi
 }
@@ -108,22 +104,22 @@ if [[ ! -d "$dir" ]]; then
 	mkdir -p "$dir"
 fi
 
-if [[ "$1" == "--now" ]]; then
+if [[ "$1" == "--rn" ]]; then
 	shotnow
-elif [[ "$1" == "--in5" ]]; then
+elif [[ "$1" == "--5sec" ]]; then
 	shot5
-elif [[ "$1" == "--in10" ]]; then
+elif [[ "$1" == "--10sec" ]]; then
 	shot10
 elif [[ "$1" == "--win" ]]; then
 	shotwin
-elif [[ "$1" == "--area" ]]; then
+elif [[ "$1" == "--select" ]]; then
 	shotarea
-elif [[ "$1" == "--active" ]]; then
+elif [[ "$1" == "--focus" ]]; then
 	shotactive
 elif [[ "$1" == "--swappy" ]]; then
 	shotswappy
 else
-	echo -e "Available Options : --now --in5 --in10 --win --area --active --swappy"
+	echo -e "Available Options : --rn --5sec --10sec --win --select --focus --swappy"
 fi
 
 exit 0
