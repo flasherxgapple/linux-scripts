@@ -1,7 +1,4 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-# Screenshots scripts
-
 
 notify_cmd_shot="notify-send -h string:x-canonical-private-synchronous:shot-notify -u low"
 
